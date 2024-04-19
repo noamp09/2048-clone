@@ -18,17 +18,31 @@ export default class Grid {
         })
         console.log(this.cells)
     }
+
+    get #emptycells() {
+        return this.#cells.filter(cell => cell.tile == null)
+    }
+
+    randomEmptyCell() {
+        const randomIndex = Math.floor(Math.random() * this.#emptycells.length)
+        return this.#emptycells[randomIndex]
+    }
 }
 
 class Cell {
     #cellElement
     #x
     #y
-    
+    #tile
+
     constructor (cellElement, x, y) {
         this.#cellElement = cellElement
         this.#x = x
         this.#y = y
+    }
+
+    get tile() {
+        return this.#tile
     }
 }
 
