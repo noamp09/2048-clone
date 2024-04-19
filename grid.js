@@ -16,7 +16,6 @@ export default class Grid {
                 Math.floor(index / grid_size)
             )
         })
-        console.log(this.cells)
     }
 
     get #emptycells() {
@@ -43,6 +42,13 @@ class Cell {
 
     get tile() {
         return this.#tile
+    }
+
+    set tile(value) {
+        this.#tile = value
+        if (value == null) return
+        this.#tile.x = this.#x
+        this.#tile.y = this.#y
     }
 }
 
